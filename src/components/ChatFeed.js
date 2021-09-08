@@ -2,21 +2,26 @@ import MyMessage from './MyMessage';
 import TheirMessage from './TheirMessage';
 import MessageForm from './MessageForm';
 
-const ChatFeed = (props) => {
+const ChatFeed = props => {
   const { chats, activeChat, userName, messages } = props;
 
   const chat = chats && chats[activeChat];
 
-  const renderReadReceipts = (message, isMyMessage) => chat.people.map((person, index) => person.last_read === message.id && (
-    <div
-      key={`read_${index}`}
-      className="read-receipt"
-      style={{
-        float: isMyMessage ? 'right' : 'left',
-        backgroundImage: person.person.avatar && `url(${person.person.avatar})`,
-      }}
-    />
-  ));
+  const renderReadReceipts = (message, isMyMessage) =>
+    chat.people.map(
+      (person, index) =>
+        person.last_read === message.id && (
+          <div
+            key={`read_${index}`}
+            className="read-receipt"
+            style={{
+              float: isMyMessage ? 'right' : 'left',
+              backgroundImage:
+                person.person.avatar && `url(${person.person.avatar})`,
+            }}
+          />
+        )
+    );
 
   const renderMessages = () => {
     const keys = Object.keys(messages);
@@ -29,11 +34,22 @@ const ChatFeed = (props) => {
       return (
         <div key={`msg_${index}`} style={{ width: '100%' }}>
           <div className="message-block">
-            {isMyMessage
-              ? <MyMessage message={message} />
-              : <TheirMessage message={message} lastMessage={messages[lastMessageKey]} />}
+            {isMyMessage ? (
+              <MyMessage message={message} />
+            ) : (
+              <TheirMessage
+                message={message}
+                lastMessage={messages[lastMessageKey]}
+              />
+            )}
           </div>
-          <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
+          <div
+            className="read-receipts"
+            style={{
+              marginRight: isMyMessage ? '18px' : '0px',
+              marginLeft: isMyMessage ? '0px' : '68px',
+            }}
+          >
             {renderReadReceipts(message, isMyMessage)}
           </div>
         </div>
@@ -48,7 +64,7 @@ const ChatFeed = (props) => {
       <div className="chat-title-container">
         <div className="chat-title">{chat?.title}</div>
         <div className="chat-subtitle">
-          {chat.people.map((person) => ` ${person.person.username}`)}
+          {chat.people.map(person => ` ${person.person.username}`)}
         </div>
       </div>
       {renderMessages()}
@@ -61,4 +77,3 @@ const ChatFeed = (props) => {
 };
 
 export default ChatFeed;
-

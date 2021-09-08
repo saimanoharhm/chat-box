@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { SendOutlined, PictureOutlined } from '@ant-design/icons';
 import { sendMessage, isTyping } from 'react-chat-engine';
 
-const MessageForm = (props) => {
+const MessageForm = props => {
   const [value, setValue] = useState('');
   const { chatId, creds } = props;
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setValue(event.target.value);
 
     isTyping(props, chatId);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
 
     const text = value.trim();
@@ -24,7 +24,7 @@ const MessageForm = (props) => {
     setValue('');
   };
 
-  const handleUpload = (event) => {
+  const handleUpload = event => {
     sendMessage(creds, chatId, { files: event.target.files, text: '' });
   };
 
