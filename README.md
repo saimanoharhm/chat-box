@@ -23,12 +23,15 @@
 </details>
 
 ## About The Project
-It is a real-time chat application where you can have a group chat, create new groups and Only admin can add new people fully secured. No other person can't join over here without admin permission. which is completely developed using React library and deployed using netlify. You can have a look at the project using the below live link and credentials.
+- Implemented real-time chat application using React, React Chat Engine, and Firebase.
+- we can have a group chat, create new groups, and only admin can add new people fully secured.
 
 ## Built With
 - Html
 - Css
 - React
+- React Chat Engine
+- Firebase
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -58,7 +61,7 @@ Firstly you should install the Node and Git in your local system to run react ap
    npm start
    ```
 
-Link to live Project:- https://elated-roentgen-8f0a0f.netlify.app
+Link to live Project:- https://chat-box-asm.netlify.app/
 
 Login Id:- sample
 <br/>
